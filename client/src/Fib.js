@@ -3,7 +3,7 @@ import axios from "axios";
 
 class Fib extends Component {
   state = {
-    seeIndexes: [],
+    seenIndexes: [],
     values: [],
     index: ""
   };
@@ -26,7 +26,7 @@ class Fib extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    await axios.post("/values", {
+    await axios.post("/api/values", {
       index: this.state.index
     });
 
@@ -34,7 +34,7 @@ class Fib extends Component {
   };
 
   renderSeenIndexes() {
-    return this.state.seeIndexes.map(({ number }) => number).join(", ");
+    return this.state.seenIndexes.map(({ number }) => number).join(", ");
   }
 
   renderValues() {

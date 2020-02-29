@@ -16,11 +16,16 @@ services:
       context: ./nginx
     ports:
       - 3000:80
+    depends_on:
+      - api
+      - client
 
   api:
     build:
       dockerfile: Dockerfile.dev
       context: ./server
+    depends_on:
+      - postgres
     volumes:
       - /app/node_modules
       - ./server:/app

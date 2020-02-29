@@ -26,7 +26,6 @@ pgClient
   .query("CREATE TABLE IF NOT EXISTS values (number INT)")
   .catch(err => console.log(err));
 
-
 // Redis Client Setup
 const redisClient = redis.createClient({
   host: keys.redisHost,
@@ -35,7 +34,6 @@ const redisClient = redis.createClient({
 });
 
 const redisPublisher = redisClient.duplicate();
-
 
 // Express Route Handlers
 app.get("/", (req, res) => {
@@ -53,7 +51,7 @@ app.get("/values/current", async (req, res) => {
   });
 });
 
-app.post("/values", async (req, res)  => {
+app.post("/values", async (req, res) => {
   const index = req.body.index;
 
   if (parseInt(index, 10) > 40) return res.status(422).send("Index too high");
@@ -68,4 +66,4 @@ app.post("/values", async (req, res)  => {
 
 app.listen(5000, err => {
   console.log("Api listening on port 5000");
-})
+});
