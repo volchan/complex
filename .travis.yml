@@ -20,14 +20,13 @@ after_success:
   - docker push volchan/complex-worker
 
 deploy:
-  edge: true
   provider: elasticbeanstalk
   region: eu-west-3
   app: volchan-complex
-  env: VolchanComplex-env
+  env: VolchanComplex-env-1
   bucket_name: elasticbeanstalk-eu-west-3-559818351576
   bucket_path: volchan-complex
-  on:
-    branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
+  on:
+    branch: master
